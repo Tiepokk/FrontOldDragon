@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">OldDragon</string>
+    <string name="title_activity_character_generator">CharacterGeneratorActivity</string>
+    <string name="title_activity_attribute_selection">AttributeSelectionActivity</string>
+    <string name="title_activity_attribute_generator">AttributeGeneratorActivity</string>
+    <string name="title_activity_dice_roller">DiceRollerActivity</string>
+</resources>
