@@ -17,7 +17,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.olddragon.data.*
+import com.example.olddragon.model.*
 import com.example.olddragon.ui.theme.OldDragonTheme
 
 class AttributeGeneratorActivity : ComponentActivity() {
@@ -101,44 +101,44 @@ fun AttributeGeneratorScreen(modifier: Modifier = Modifier) {
         }
 
         // Seleção de Distribuição
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 24.dp)
-        ) {
-            Column(
-                modifier = Modifier.padding(16.dp)
-            ) {
-                Text(
-                    text = "Distribuição de Atributos",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Medium,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-
-                Text(
-                    text = "Aleatório: Valores distribuídos automaticamente\nEscolher: Você escolhe onde colocar cada valor",
-                    fontSize = 14.sp,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-
-                distributions.forEach { distribution ->
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.fillMaxWidth()
-                    ) {
-                        RadioButton(
-                            selected = selectedDistribution == distribution,
-                            onClick = { selectedDistribution = distribution }
-                        )
-                        Text(
-                            text = distribution,
-                            modifier = Modifier.padding(start = 8.dp)
-                        )
-                    }
-                }
-            }
-        }
+//        Card(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(bottom = 24.dp)
+//        ) {
+//            Column(
+//                modifier = Modifier.padding(16.dp)
+//            ) {
+//                Text(
+//                    text = "Distribuição de Atributos",
+//                    fontSize = 18.sp,
+//                    fontWeight = FontWeight.Medium,
+//                    modifier = Modifier.padding(bottom = 8.dp)
+//                )
+//
+//                Text(
+//                    text = "Aleatório: Valores distribuídos automaticamente\nEscolher: Você escolhe onde colocar cada valor",
+//                    fontSize = 14.sp,
+//                    modifier = Modifier.padding(bottom = 8.dp)
+//                )
+//
+//                distributions.forEach { distribution ->
+//                    Row(
+//                        verticalAlignment = Alignment.CenterVertically,
+//                        modifier = Modifier.fillMaxWidth()
+//                    ) {
+//                        RadioButton(
+//                            selected = selectedDistribution == distribution,
+//                            onClick = { selectedDistribution = distribution }
+//                        )
+//                        Text(
+//                            text = distribution,
+//                            modifier = Modifier.padding(start = 8.dp)
+//                        )
+//                    }
+//                }
+//            }
+//        }
 
         // Botão Gerar
         Button(
@@ -151,7 +151,7 @@ fun AttributeGeneratorScreen(modifier: Modifier = Modifier) {
 
                 rawValues = valores
 
-                if (selectedDistribution == "Escolher") {
+                if ((selectedMethod == "Aventureiro") || (selectedMethod == "Heroico")) {
                     val intent = Intent(context, AttributeSelectionActivity::class.java)
                     intent.putIntegerArrayListExtra("values", ArrayList(valores))
                     context.startActivity(intent)
@@ -205,6 +205,24 @@ fun AttributeGeneratorScreen(modifier: Modifier = Modifier) {
         // Exibir Atributos Gerados
         generatedAttributes?.let { attributes ->
             AttributeDisplay(attributes = attributes)
+
+            // Botão para continuar criando personagem
+            Button(
+                onClick = {
+                    val intent = Intent(context, RaceSelectionActivity::class.java)
+                    intent.putExtra("attributes", attributes)
+                    context.startActivity(intent)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+                    .padding(bottom = 8.dp)
+            ) {
+                Text(
+                    text = "Criar Personagem com estes Atributos",
+                    fontSize = 16.sp
+                )
+            }
         }
 
         // Botão Voltar
@@ -294,7 +312,4 @@ fun AttributeDisplay(attributes: Atributos) {
 @Preview(showBackground = true)
 @Composable
 fun AttributeGeneratorPreview() {
-    OldDragonTheme {
-        AttributeGeneratorScreen()
-    }
 }

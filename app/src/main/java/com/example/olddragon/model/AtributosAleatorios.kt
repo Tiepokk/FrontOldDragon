@@ -1,4 +1,4 @@
-package com.example.olddragon.data
+package com.example.olddragon.model
 
 class AtributosAleatorios : EscolherDistribuicao {
     override fun escolherDistribuicao(valoresAtributos: MutableList<Int>): Atributos {

@@ -12,8 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OldDragon"
         tools:targetApi="31">
-
-        <!-- Activity Principal -->
+        <activity
+            android:name=".CharacterCreationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_character_creation"
+            android:theme="@style/Theme.OldDragon" />
+        <activity
+            android:name=".ClassSelectionActivity"
+            android:exported="false"
+            android:label="@string/title_activity_class_selection"
+            android:theme="@style/Theme.OldDragon" />
+        <activity
+            android:name=".RaceSelectionActivity"
+            android:exported="false"
+            android:label="@string/title_activity_race_selection"
+            android:theme="@style/Theme.OldDragon" /> <!-- Activity Principal -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -21,31 +34,20 @@
             android:theme="@style/Theme.OldDragon">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Activity Gerador de Atributos -->
+        </activity> <!-- Activity Gerador de Atributos -->
         <activity
             android:name=".AttributeGeneratorActivity"
             android:exported="false"
             android:label="Gerador de Atributos"
-            android:parentActivityName=".MainActivity" />
-
-        <!-- Activity Seleção de Atributos -->
+            android:parentActivityName=".MainActivity" /> <!-- Activity Seleção de Atributos -->
         <activity
             android:name=".AttributeSelectionActivity"
             android:exported="false"
             android:label="Distribuir Atributos"
             android:parentActivityName=".AttributeGeneratorActivity" />
-
-        <!-- Activity Rolador de Dados -->
-        <activity
-            android:name=".DiceRollerActivity"
-            android:exported="false"
-            android:label="Rolador de Dados"
-            android:parentActivityName=".MainActivity" />
-
     </application>
 
 </manifest>

@@ -1,4 +1,6 @@
-package com.example.olddragon.data
+package com.example.olddragon.model
+
+import java.io.Serializable
 
 data class Atributos(
     var forca: Int,
@@ -7,4 +9,4 @@ data class Atributos(
     var inteligencia: Int,
     var sabedoria: Int,
     var carisma: Int
-)
+) : Serializable

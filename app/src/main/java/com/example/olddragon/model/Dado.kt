@@ -1,4 +1,4 @@
-package com.example.olddragon.data
+package com.example.olddragon.model
 
 import java.util.Random
 

@@ -1,5 +1,6 @@
 package com.example.olddragon
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,7 +17,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.olddragon.data.*
+import com.example.olddragon.model.*
 import com.example.olddragon.ui.theme.OldDragonTheme
 
 class AttributeSelectionActivity : ComponentActivity() {
@@ -163,7 +164,7 @@ fun AttributeSelectionScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp)
-                .padding(vertical = 16.dp)
+                .padding(bottom = 16.dp)
         ) {
             Text(
                 text = "Finalizar Distribuição",
@@ -174,6 +175,24 @@ fun AttributeSelectionScreen(
         // Exibir atributos finais
         generatedAttributes?.let { attributes ->
             AttributeDisplay(attributes = attributes)
+
+            // CORREÇÃO: Botão para continuar criando personagem
+            Button(
+                onClick = {
+                    val intent = Intent(context, RaceSelectionActivity::class.java)
+                    intent.putExtra("attributes", attributes)
+                    context.startActivity(intent)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp)
+                    .padding(vertical = 8.dp)
+            ) {
+                Text(
+                    text = "Criar Personagem com estes Atributos",
+                    fontSize = 16.sp
+                )
+            }
         }
 
         // Botão Voltar
@@ -255,9 +274,4 @@ fun AttributeSelector(
 @Preview(showBackground = true)
 @Composable
 fun AttributeSelectionPreview() {
-    OldDragonTheme {
-        AttributeSelectionScreen(
-            availableValues = listOf(15, 14, 13, 12, 12, 10, 8) // Note: dois 12s para testar
-        )
-    }
 }

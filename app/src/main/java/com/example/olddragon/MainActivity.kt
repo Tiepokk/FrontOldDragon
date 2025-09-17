@@ -48,16 +48,17 @@ fun MainMenu(modifier: Modifier = Modifier) {
             fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
             textAlign = TextAlign.Center,
-            modifier = Modifier.padding(bottom = 32.dp)
+            modifier = Modifier.padding(bottom = 16.dp)
         )
 
         Text(
-            text = "Gerador de Atributos",
+            text = "Sistema de RPG Clássico",
             fontSize = 18.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(bottom = 48.dp)
         )
 
+        // Botão para geração de atributos
         Button(
             onClick = {
                 val intent = Intent(context, AttributeGeneratorActivity::class.java)
@@ -73,13 +74,45 @@ fun MainMenu(modifier: Modifier = Modifier) {
                 fontSize = 16.sp
             )
         }
+
+        // Informações sobre o aplicativo
+        Card(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 32.dp)
+        ) {
+            Column(
+                modifier = Modifier.padding(16.dp)
+            ) {
+                Text(
+                    text = "Funcionalidades",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+
+                Text(
+                    text = "• Geração de atributos (Clássico, Aventureiro, Heroico)",
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(bottom = 4.dp)
+                )
+
+                Text(
+                    text = "• Seleção de classes (Ranger, Bárbaro, Druida)",
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(bottom = 4.dp)
+                )
+
+                Text(
+                    text = "• Criação completa de personagem",
+                    fontSize = 14.sp
+                )
+            }
+        }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun MainMenuPreview() {
-    OldDragonTheme {
-        MainMenu()
-    }
 }
