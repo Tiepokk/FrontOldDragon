@@ -13,22 +13,22 @@
         android:theme="@style/Theme.OldDragon"
         tools:targetApi="31">
         <activity
-            android:name=".CharacterCreationActivity"
+            android:name=".view.activities.CharacterCreationActivity"
             android:exported="false"
             android:label="@string/title_activity_character_creation"
             android:theme="@style/Theme.OldDragon" />
         <activity
-            android:name=".ClassSelectionActivity"
+            android:name=".view.activities.ClassSelectionActivity"
             android:exported="false"
             android:label="@string/title_activity_class_selection"
             android:theme="@style/Theme.OldDragon" />
         <activity
-            android:name=".RaceSelectionActivity"
+            android:name=".view.activities.RaceSelectionActivity"
             android:exported="false"
             android:label="@string/title_activity_race_selection"
             android:theme="@style/Theme.OldDragon" /> <!-- Activity Principal -->
         <activity
-            android:name=".MainActivity"
+            android:name=".view.activities.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.OldDragon">
@@ -39,15 +39,15 @@
             </intent-filter>
         </activity> <!-- Activity Gerador de Atributos -->
         <activity
-            android:name=".AttributeGeneratorActivity"
+            android:name=".view.activities.AttributeGeneratorActivity"
             android:exported="false"
             android:label="Gerador de Atributos"
-            android:parentActivityName=".MainActivity" /> <!-- Activity Seleção de Atributos -->
+            android:parentActivityName=".view.activities.MainActivity" /> <!-- Activity Seleção de Atributos -->
         <activity
-            android:name=".AttributeSelectionActivity"
+            android:name=".view.activities.AttributeSelectionActivity"
             android:exported="false"
             android:label="Distribuir Atributos"
-            android:parentActivityName=".AttributeGeneratorActivity" />
+            android:parentActivityName=".view.activities.AttributeGeneratorActivity" />
     </application>
 
 </manifest>

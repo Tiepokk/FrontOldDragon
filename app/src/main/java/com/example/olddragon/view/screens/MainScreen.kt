@@ -1,41 +1,20 @@
-package com.example.olddragon
+package com.example.olddragon.view.screens
 
-import android.content.Intent
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.olddragon.ui.theme.OldDragonTheme
-
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            OldDragonTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    MainMenu(modifier = Modifier.padding(innerPadding))
-                }
-            }
-        }
-    }
-}
 
 @Composable
-fun MainMenu(modifier: Modifier = Modifier) {
-    val context = LocalContext.current
-
+fun MainScreen(
+    modifier: Modifier = Modifier,
+    onGerarAtributos: () -> Unit
+) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -60,10 +39,7 @@ fun MainMenu(modifier: Modifier = Modifier) {
 
         // Botão para geração de atributos
         Button(
-            onClick = {
-                val intent = Intent(context, AttributeGeneratorActivity::class.java)
-                context.startActivity(intent)
-            },
+            onClick = onGerarAtributos,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp)
@@ -110,9 +86,4 @@ fun MainMenu(modifier: Modifier = Modifier) {
             }
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun MainMenuPreview() {
 }
