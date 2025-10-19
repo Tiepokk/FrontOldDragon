@@ -12,21 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OldDragon"
         tools:targetApi="31">
-        <activity
-            android:name=".view.activities.CharacterCreationActivity"
-            android:exported="false"
-            android:label="@string/title_activity_character_creation"
-            android:theme="@style/Theme.OldDragon" />
-        <activity
-            android:name=".view.activities.ClassSelectionActivity"
-            android:exported="false"
-            android:label="@string/title_activity_class_selection"
-            android:theme="@style/Theme.OldDragon" />
-        <activity
-            android:name=".view.activities.RaceSelectionActivity"
-            android:exported="false"
-            android:label="@string/title_activity_race_selection"
-            android:theme="@style/Theme.OldDragon" /> <!-- Activity Principal -->
+
+        <!-- MainActivity - Tela Principal -->
         <activity
             android:name=".view.activities.MainActivity"
             android:exported="true"
@@ -34,20 +21,59 @@
             android:theme="@style/Theme.OldDragon">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Activity Gerador de Atributos -->
+        </activity>
+
+        <!-- AttributeGeneratorActivity -->
         <activity
             android:name=".view.activities.AttributeGeneratorActivity"
             android:exported="false"
             android:label="Gerador de Atributos"
-            android:parentActivityName=".view.activities.MainActivity" /> <!-- Activity Seleção de Atributos -->
+            android:theme="@style/Theme.OldDragon" />
+
+        <!-- AttributeSelectionActivity -->
         <activity
             android:name=".view.activities.AttributeSelectionActivity"
             android:exported="false"
-            android:label="Distribuir Atributos"
-            android:parentActivityName=".view.activities.AttributeGeneratorActivity" />
+            android:label="Seleção de Atributos"
+            android:theme="@style/Theme.OldDragon" />
+
+        <!-- RaceSelectionActivity -->
+        <activity
+            android:name=".view.activities.RaceSelectionActivity"
+            android:exported="false"
+            android:label="Seleção de Raça"
+            android:theme="@style/Theme.OldDragon" />
+
+        <!-- ClassSelectionActivity -->
+        <activity
+            android:name=".view.activities.ClassSelectionActivity"
+            android:exported="false"
+            android:label="Seleção de Classe"
+            android:theme="@style/Theme.OldDragon" />
+
+        <!-- CharacterCreationActivity -->
+        <activity
+            android:name=".view.activities.CharacterCreationActivity"
+            android:exported="false"
+            android:label="Criação de Personagem"
+            android:theme="@style/Theme.OldDragon" />
+
+        <!-- PersonagemListActivity - NOVA -->
+        <activity
+            android:name=".view.activities.PersonagemListActivity"
+            android:exported="false"
+            android:label="Meus Personagens"
+            android:theme="@style/Theme.OldDragon" />
+
+        <!-- PersonagemDetailActivity - NOVA -->
+        <activity
+            android:name=".view.activities.PersonagemDetailActivity"
+            android:exported="false"
+            android:label="Detalhes do Personagem"
+            android:theme="@style/Theme.OldDragon" />
+
     </application>
 
 </manifest>

@@ -24,6 +24,10 @@ class MainActivity : ComponentActivity() {
                         onGerarAtributos = {
                             val intent = Intent(this@MainActivity, AttributeGeneratorActivity::class.java)
                             startActivity(intent)
+                        },
+                        onVerPersonagens = {
+                            val intent = Intent(this@MainActivity, PersonagemListActivity::class.java)
+                            startActivity(intent)
                         }
                     )
                 }

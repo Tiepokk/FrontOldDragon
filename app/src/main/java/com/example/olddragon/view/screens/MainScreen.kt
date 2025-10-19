@@ -13,7 +13,8 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
-    onGerarAtributos: () -> Unit
+    onGerarAtributos: () -> Unit,
+    onVerPersonagens: () -> Unit = {}
 ) {
     Column(
         modifier = modifier
@@ -37,7 +38,7 @@ fun MainScreen(
             modifier = Modifier.padding(bottom = 48.dp)
         )
 
-        // Botão para geração de atributos
+        // Botão para criar novo personagem
         Button(
             onClick = onGerarAtributos,
             modifier = Modifier
@@ -46,7 +47,21 @@ fun MainScreen(
                 .padding(bottom = 16.dp)
         ) {
             Text(
-                text = "Gerar Atributos",
+                text = "Criar Novo Personagem",
+                fontSize = 16.sp
+            )
+        }
+
+        // Botão para ver personagens salvos
+        OutlinedButton(
+            onClick = onVerPersonagens,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp)
+                .padding(bottom = 16.dp)
+        ) {
+            Text(
+                text = "Ver Meus Personagens",
                 fontSize = 16.sp
             )
         }
@@ -74,13 +89,25 @@ fun MainScreen(
                 )
 
                 Text(
+                    text = "• Seleção de raças (6 raças disponíveis)",
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(bottom = 4.dp)
+                )
+
+                Text(
                     text = "• Seleção de classes (Ranger, Bárbaro, Druida)",
                     fontSize = 14.sp,
                     modifier = Modifier.padding(bottom = 4.dp)
                 )
 
                 Text(
-                    text = "• Criação completa de personagem",
+                    text = "• Criação e salvamento de personagens",
+                    fontSize = 14.sp,
+                    modifier = Modifier.padding(bottom = 4.dp)
+                )
+
+                Text(
+                    text = "• Banco de dados local (SQLite + Room)",
                     fontSize = 14.sp
                 )
             }
