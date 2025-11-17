@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissões para notificações e serviço em foreground -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -60,19 +65,37 @@
             android:label="Criação de Personagem"
             android:theme="@style/Theme.OldDragon" />
 
-        <!-- PersonagemListActivity - NOVA -->
+        <!-- PersonagemListActivity -->
         <activity
             android:name=".view.activities.PersonagemListActivity"
             android:exported="false"
             android:label="Meus Personagens"
             android:theme="@style/Theme.OldDragon" />
 
-        <!-- PersonagemDetailActivity - NOVA -->
+        <!-- PersonagemDetailActivity -->
         <activity
             android:name=".view.activities.PersonagemDetailActivity"
             android:exported="false"
             android:label="Detalhes do Personagem"
             android:theme="@style/Theme.OldDragon" />
+
+        <!-- BattleActivity - NOVA -->
+        <activity
+            android:name=".view.activities.BattleActivity"
+            android:exported="false"
+            android:label="Simulador de Batalha"
+            android:theme="@style/Theme.OldDragon" />
+
+        <!-- BattleService - NOVO -->
+        <service
+            android:name=".service.BattleService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="RPG Battle Simulator" />
+        </service>
 
     </application>
 

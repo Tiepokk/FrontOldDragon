@@ -1,19 +1,21 @@
 package com.example.olddragon.view.screens
 
+import android.content.Intent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.olddragon.model.Personagem
+import com.example.olddragon.view.activities.BattleActivity
 import com.example.olddragon.view.components.CharacterSheet
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -25,6 +27,7 @@ fun PersonagemDetailScreen(
     onVoltar: () -> Unit
 ) {
     var showDeleteDialog by remember { mutableStateOf(false) }
+    val context = LocalContext.current
 
     Scaffold(
         topBar = {
@@ -74,8 +77,6 @@ fun PersonagemDetailScreen(
                         fontSize = 14.sp,
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
-
-                    // Aqui você pode adicionar mais detalhes da raça
                 }
             }
 
@@ -99,12 +100,29 @@ fun PersonagemDetailScreen(
                         fontSize = 14.sp,
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
-
-                    // Aqui você pode adicionar mais detalhes da classe
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Botão de Batalha
+            Button(
+                onClick = {
+                    val intent = Intent(context, BattleActivity::class.java)
+                    intent.putExtra("personagemId", personagem.id)
+                    context.startActivity(intent)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(56.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.tertiary
+                )
+            ) {
+                Text("⚔️ Iniciar Batalha", fontSize = 16.sp)
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
 
             // Botão Voltar
             OutlinedButton(
